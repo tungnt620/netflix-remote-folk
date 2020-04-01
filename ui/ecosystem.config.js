@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'wuxia-world-audio-admin-fe',
+      name: 'netflix-remote-fe',
       script: '',
       // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
       args: '',
@@ -22,12 +22,12 @@ module.exports = {
   deploy: {
     production: {
       key: '/Users/nguyentung/.ssh/id_rsa',
-      user: 'root',
-      host: ['155.138.240.103'],
+      user: 'deploy',
+      host: ['45.77.40.46'],
       ref: 'origin/master',
-      repo: 'git@github.com:tungnt620/wuxia-world-audio.git',
-      path: '/var/www/wuxia-world-audio',
-      'post-deploy': 'cd selfHost/admin-fe && npm install && npm run build',
+      repo: 'git@github.com:tungnt620/netflix-remote-folk.git',
+      path: '/var/www/netflix-remote',
+      'post-deploy': 'cd ui && npm install && npm run build',
     },
   },
 }
