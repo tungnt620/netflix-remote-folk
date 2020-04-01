@@ -23,8 +23,8 @@ module.exports = {
   deploy: {
     production: {
       key: "/Users/nguyentung/.ssh/id_rsa",
-      user: "root",
-      host: ["confession.vn"],
+      user: "deploy",
+      host: ["45.77.40.46"],
       ref: "origin/master",
       repo: "git@github.com:tungnt620/netflix-remote-folk.git",
       path: "/var/www/netflix-remote",
