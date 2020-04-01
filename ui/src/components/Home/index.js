@@ -30,7 +30,9 @@ const Home = () => {
 
   useEffect(() => {
     const peer = new Peer({ initiator: false, trickle: false })
-    const socket = io(process.env.REACT_APP_BROKER_URL)
+    const socket = io.connect(process.env.REACT_APP_BROKER_URL, {
+      path: '/netflix-broker',
+    })
     updateState({ socket, peer })
 
     socket.on('incoming-signal', data => {
