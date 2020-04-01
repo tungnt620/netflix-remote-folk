@@ -12,10 +12,10 @@ module.exports = {
       ignore_watch: ["node_modules"],
       max_memory_restart: "1G",
       env: {
-        NODE_ENV: "development",
+        NODE_ENV: "development"
       },
       env_production: {
-        NODE_ENV: "production",
+        NODE_ENV: "production"
       }
     }
   ],
@@ -26,10 +26,10 @@ module.exports = {
       user: "root",
       host: ["confession.vn"],
       ref: "origin/master",
-      repo: "git@github.com:tungnt620/wuxia-world-audio.git",
+      repo: "git@github.com:tungnt620/netflix-remote-folk.git",
       path: "/var/www/netflix-remote",
       "post-deploy":
-        "cd selfHost/api && npm install && pm2 reload ecosystem.config.js --env production"
+        "cd broker && npm install && pm2 reload ecosystem.config.js --env production"
     }
   }
 };
