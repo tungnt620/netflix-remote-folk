@@ -5,7 +5,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/content.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/ui/.env.production" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ecosystem.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ecosystem.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/src/github.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/old/src/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/style.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +84,7 @@
       <workItem from="1585637291646" duration="7124000" />
       <workItem from="1585661191905" duration="403000" />
       <workItem from="1585701212910" duration="5862000" />
-      <workItem from="1585721161342" duration="6116000" />
+      <workItem from="1585721161342" duration="7022000" />
     </task>
     <servers />
   </component>

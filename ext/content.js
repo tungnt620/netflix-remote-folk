@@ -68,7 +68,7 @@ function initPeer() {
     peerInit.destroy();
     peer = new SimplePeer({ initiator: true, trickle: false });
   }
-  const socket = io("http://confession.vn:4003/");
+  const socket = io("https://confession.vn/netflix-broker/");
   // const socket = io('https://netflix-signal.herokuapp.com/');
   const state = {
     socket: false,

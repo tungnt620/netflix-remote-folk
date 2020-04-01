@@ -21,6 +21,10 @@
         width: 200px;
         margin-bottom: 20px;
       }
+
+      video, canvas {
+        display: block;
+      }
     }
 
     .controls {
