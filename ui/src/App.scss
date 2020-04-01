@@ -1,0 +1,30 @@
+/*!
+ * Reset CSS
+ */
+@import-normalize;
+
+
+/*!
+ * Overwrite AntDesign Styles
+ */
+.ant-layout-sider-trigger {
+    background-color: #ED4C2C;
+}
+
+th.center-column,
+td.center-column {
+    text-align: center !important;
+}
+
+
+/*!
+ * Helper Classes
+ */
+.mgb-20 {
+    margin-bottom: 20px;
+}
+
+.flex-justify-content-end {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,37 @@
+.layout {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .content {
+    padding: 20px 10px;
+
+    .scan-block {
+      text-align: center;
+
+      .peer-id-input {
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .btn-scan, .btn-connect {
+        width: 200px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .controls {
+      margin: 20px 0;
+      text-align: center;
+
+      button {
+        margin-bottom: 10px;
+        width: 50%;
+      }
+    }
+
+  }
+}
