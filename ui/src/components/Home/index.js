@@ -30,11 +30,8 @@ const Home = () => {
 
   useEffect(() => {
     if (uiState.peerId) {
-      console.log(JSON.stringify(uiState))
-      updateState({
-        isCamera: false,
-      })
-      connectRemote()
+      alert(JSON.stringify(uiState))
+      connectRemote(uiState.peerId)
     }
   }, [uiState.peerId])
 
@@ -104,8 +101,8 @@ const Home = () => {
       })
   }
 
-  function connectRemote() {
-    uiState.socket.emit('get-signal', uiState.peerId)
+  function connectRemote(peerId) {
+    uiState.socket.emit('get-signal', peerId)
   }
 
   function searchNetflix() {
@@ -161,6 +158,7 @@ const Home = () => {
           inversionAttempts: 'dontInvert',
         })
         if (code) {
+          alert(code.data)
           uiState.stream.getTracks().forEach(track => track.stop())
           updateState({
             isCamera: false,
