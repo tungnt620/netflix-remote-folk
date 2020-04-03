@@ -151,6 +151,7 @@ const Home = () => {
           inversionAttempts: 'dontInvert',
         })
         if (code) {
+          alert(code)
           uiState.stream.getTracks().forEach(track => track.stop())
           updateState({
             isCamera: false,
