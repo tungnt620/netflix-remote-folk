@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ext/popup/images/netflix128.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/broker/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/broker/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/ext/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/ui/.env.production" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ext/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/popup/images/remote_128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/popup/images/remote_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/popup/images/remote_32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/popup/images/remote_48.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ext/popup/images" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -44,13 +45,14 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ext/popup/images" />
+      <recent name="$PROJECT_DIR$/ui" />
+      <recent name="$PROJECT_DIR$/broker" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ui/src/assets" />
       <recent name="$PROJECT_DIR$/ui/old" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ui" />
-      <recent name="$PROJECT_DIR$/broker" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -82,7 +84,7 @@
       <workItem from="1585701212910" duration="5862000" />
       <workItem from="1585721161342" duration="8433000" />
       <workItem from="1585831983928" duration="307000" />
-      <workItem from="1585882259932" duration="1942000" />
+      <workItem from="1585882259932" duration="3195000" />
     </task>
     <servers />
   </component>

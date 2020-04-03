@@ -1,7 +1,7 @@
 {
-    "name": "Netflix remote control",
+    "name": "Điều khiển từ xa cho netflix",
     "version": "1.1",
-    "description": "Remote for Netflix!",
+    "description": "Thực hiện các tác vụ: tạm đừng, play, tua ngược, ... từ điện thoại của bạn đến Netflix trên máy tính.",
     "permissions": [ "declarativeContent", "storage" ],
     "manifest_version": 2,
     "content_scripts": [
@@ -17,16 +17,16 @@
     "page_action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "16": "popup/images/remote_16.png",
-            "32": "popup/images/remote_32.png",
-            "48": "popup/images/remote_48.png",
-            "128": "popup/images/remote_128.png"
+            "16": "popup/images/netflix128.png",
+            "32": "popup/images/netflix128.png",
+            "48": "popup/images/netflix128.png",
+            "128": "popup/images/netflix128.png"
         }
     },
     "icons": {
-        "16": "popup/images/remote_16.png",
-        "32": "popup/images/remote_32.png",
-        "48": "popup/images/remote_48.png",
-        "128": "popup/images/remote_128.png"
+        "16": "popup/images/netflix128.png",
+        "32": "popup/images/netflix128.png",
+        "48": "popup/images/netflix128.png",
+        "128": "popup/images/netflix128.png"
     }
 }

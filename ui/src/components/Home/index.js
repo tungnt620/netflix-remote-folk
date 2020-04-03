@@ -237,11 +237,11 @@ const Home = () => {
 
                 <canvas ref={canvasRef} hidden />
 
-                <Input
-                  className={'peer-id-input'}
-                  placeholder={'Enter code'}
-                  onChange={e => updateState({ peerId: e.target.value })}
-                />
+                {/*<Input*/}
+                {/*  className={'peer-id-input'}*/}
+                {/*  placeholder={'Enter code'}*/}
+                {/*  onChange={e => updateState({ peerId: e.target.value })}*/}
+                {/*/>*/}
 
                 <p>
                   <Button
