@@ -32,6 +32,7 @@ const Home = () => {
     const peer = new Peer({ initiator: false, trickle: false })
     const socket = io.connect(process.env.REACT_APP_BROKER_URL, {
       path: '/netflix-broker/socket.io',
+      transports: ['websocket'],
     })
     updateState({ socket, peer })
 

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ext.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/ext/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,12 +78,22 @@
       <workItem from="1585701212910" duration="5862000" />
       <workItem from="1585721161342" duration="8433000" />
       <workItem from="1585831983928" duration="307000" />
-      <workItem from="1585882259932" duration="3264000" />
+      <workItem from="1585882259932" duration="4356000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
