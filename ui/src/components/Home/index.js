@@ -29,6 +29,16 @@ const Home = () => {
   }, [uiState])
 
   useEffect(() => {
+    if (uiState.peerId) {
+      console.log(JSON.stringify(uiState))
+      updateState({
+        isCamera: false,
+      })
+      connectRemote()
+    }
+  }, [uiState.peerId])
+
+  useEffect(() => {
     const peer = new Peer({ initiator: false, trickle: false })
     const socket = io.connect(process.env.REACT_APP_BROKER_URL, {
       path: '/netflix-broker/socket.io',
@@ -151,7 +161,6 @@ const Home = () => {
           inversionAttempts: 'dontInvert',
         })
         if (code) {
-          alert(code.data)
           uiState.stream.getTracks().forEach(track => track.stop())
           updateState({
             isCamera: false,
@@ -245,18 +254,18 @@ const Home = () => {
                 {/*  onChange={e => updateState({ peerId: e.target.value })}*/}
                 {/*/>*/}
 
-                <p>
-                  <Button
-                    className={'btn-connect'}
-                    icon={<ApiOutlined />}
-                    size={'large'}
-                    type={'primary'}
-                    disabled={!uiState.peerId}
-                    onClick={connectRemote}
-                  >
-                    Connect
-                  </Button>
-                </p>
+                {/*<p>*/}
+                {/*  <Button*/}
+                {/*    className={'btn-connect'}*/}
+                {/*    icon={<ApiOutlined />}*/}
+                {/*    size={'large'}*/}
+                {/*    type={'primary'}*/}
+                {/*    disabled={!uiState.peerId}*/}
+                {/*    onClick={connectRemote}*/}
+                {/*  >*/}
+                {/*    Connect*/}
+                {/*  </Button>*/}
+                {/*</p>*/}
               </div>
             </>
           )}
