@@ -31,8 +31,7 @@ const Home = () => {
   useEffect(() => {
     const peer = new Peer({ initiator: false, trickle: false })
     const socket = io.connect(process.env.REACT_APP_BROKER_URL, {
-      path: '/netflix-broker',
-      transports: ['websocket'],
+      path: '/netflix-broker/socket.io',
     })
     updateState({ socket, peer })
 
@@ -238,11 +237,11 @@ const Home = () => {
 
                 <canvas ref={canvasRef} hidden />
 
-                {/*<Input*/}
-                {/*  className={'peer-id-input'}*/}
-                {/*  placeholder={'Enter code'}*/}
-                {/*  onChange={e => updateState({ peerId: e.target.value })}*/}
-                {/*/>*/}
+                <Input
+                  className={'peer-id-input'}
+                  placeholder={'Enter code'}
+                  onChange={e => updateState({ peerId: e.target.value })}
+                />
 
                 <p>
                   <Button

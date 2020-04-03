@@ -16,18 +16,14 @@ function peerDisconnected() {
 function peerConnected() {
   const status = document.querySelector("#connection-status");
   document.querySelector("#helper-text").hidden = true;
-  chrome.storage.local.get(["qrCodeImage"], function(data) {
-    document.querySelector("#qr-code").src = data.qrCodeImage;
-  });
+  document.querySelector("#qr-code").hidden = true;
   status.hidden = false;
   status.textContent = "Connected";
   status.classList.add("connection--success");
 }
 chrome.runtime.onMessage.addListener(function(msg, sender, response) {
   if (Object.keys(msg).includes("peerId")) {
-    const qrCodeImage = qrCode(msg.peerId);
-    chrome.storage.local.set({ qrCodeImage: qrCodeImage });
-    document.querySelector("#qr-code").src = qrCodeImage;
+    document.querySelector("#qr-code").src = qrCode(msg.peerId);
     document.querySelector("#peer-id").innerHTML = msg.peerId;
   }
   if (Object.keys(msg).includes("peerConnected")) {

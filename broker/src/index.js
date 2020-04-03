@@ -1,5 +1,5 @@
 const server = require("http").createServer();
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, { path: "/netflix-broker/socket.io" });
 const handles = require("./handles");
 const { peers } = require("./db");
 io.on("connection", socket => {
