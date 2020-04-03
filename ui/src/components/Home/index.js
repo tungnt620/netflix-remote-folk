@@ -29,11 +29,11 @@ const Home = () => {
   }, [uiState])
 
   useEffect(() => {
-    if (uiState.peerId) {
-      alert(JSON.stringify(uiState))
-      connectRemote(uiState.peerId)
+    if (uiStateRef.current.peerId) {
+      alert(JSON.stringify(uiStateRef.current))
+      connectRemote(uiStateRef.current.peerId)
     }
-  }, [uiState.peerId])
+  }, [uiStateRef.current.peerId])
 
   useEffect(() => {
     const peer = new Peer({ initiator: false, trickle: false })
@@ -63,14 +63,14 @@ const Home = () => {
       refreshWindow()
       updateState({ peerConnected: false })
     })
-  }, [uiState.peerId])
+  }, [])
 
   const updateState = newUIStateValues => {
     dispatch(updateUIState(newUIStateValues))
   }
 
   function sendPeer(data) {
-    uiState.peer.send(JSON.stringify(data))
+    uiStateRef.current.peer.send(JSON.stringify(data))
   }
 
   function showError(message) {
@@ -102,14 +102,14 @@ const Home = () => {
   }
 
   function connectRemote(peerId) {
-    uiState.socket.emit('get-signal', peerId)
+    uiStateRef.current.socket.emit('get-signal', peerId)
   }
 
   function searchNetflix() {
     sendPeer({
       action: 'search',
       payload: {
-        text: uiState.searchText,
+        text: uiStateRef.current.searchText,
       },
     })
   }
@@ -135,7 +135,7 @@ const Home = () => {
       updateState({
         error: {
           show: false,
-          message: uiState.message,
+          message: uiStateRef.current.message,
         },
       })
     }
@@ -159,7 +159,7 @@ const Home = () => {
         })
         if (code) {
           alert(code.data)
-          uiState.stream.getTracks().forEach(track => track.stop())
+          uiStateRef.current.stream.getTracks().forEach(track => track.stop())
           updateState({
             isCamera: false,
             qr: {
@@ -177,7 +177,7 @@ const Home = () => {
           })
         }
       }
-      if (!uiState.qr.output) {
+      if (!uiStateRef.current.qr.output) {
         requestAnimationFrame(tick)
       }
     } catch (e) {
