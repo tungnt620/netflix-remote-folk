@@ -2,13 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Alert, Button, Input, Layout } from 'antd'
 import { updateUIState } from '../../store/ui/actions'
-import jsQR from 'jsqr'
 import Peer from 'simple-peer'
 import io from 'socket.io-client'
 import logo from 'assets/netflix.svg'
 import { ReloadOutlined } from '@ant-design/icons'
 import './style.scss'
-import ScanOutlined from '@ant-design/icons/es/icons/ScanOutlined'
 import ApiOutlined from '@ant-design/icons/es/icons/ApiOutlined'
 import PlayCircleOutlined from '@ant-design/icons/es/icons/PlayCircleOutlined'
 import PauseCircleOutlined from '@ant-design/icons/es/icons/PauseCircleOutlined'
@@ -21,19 +19,10 @@ const Home = () => {
   const uiState = useSelector(({ ui }) => ui)
   const uiStateRef = useRef(uiState)
   const dispatch = useDispatch()
-  const videoRef = useRef(null)
-  const canvasRef = useRef(null)
 
   useEffect(() => {
     uiStateRef.current = uiState
   }, [uiState])
-
-  useEffect(() => {
-    if (uiStateRef.current.peerId) {
-      alert(JSON.stringify(uiStateRef.current))
-      connectRemote(uiStateRef.current.peerId)
-    }
-  }, [uiStateRef.current.peerId])
 
   useEffect(() => {
     const peer = new Peer({ initiator: false, trickle: false })
@@ -70,7 +59,7 @@ const Home = () => {
   }
 
   function sendPeer(data) {
-    uiStateRef.current.peer.send(JSON.stringify(data))
+    uiState.peer.send(JSON.stringify(data))
   }
 
   function showError(message) {
@@ -82,36 +71,8 @@ const Home = () => {
     })
   }
 
-  function scanCode() {
-    navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: 'environment' } })
-      .then(stream => {
-        updateState({
-          stream,
-          isCamera: true,
-        })
-        const video = videoRef.current
-        video.srcObject = stream
-        video.setAttribute('playsinline', true)
-        video.play()
-        requestAnimationFrame(tick)
-      })
-      .catch(e => {
-        showError(e.message)
-      })
-  }
-
-  function connectRemote(peerId) {
-    uiStateRef.current.socket.emit('get-signal', peerId)
-  }
-
-  function searchNetflix() {
-    sendPeer({
-      action: 'search',
-      payload: {
-        text: uiStateRef.current.searchText,
-      },
-    })
+  function connectRemote() {
+    uiState.socket.emit('get-signal', uiState.peerId)
   }
 
   function videoAction(action) {
@@ -135,7 +96,7 @@ const Home = () => {
       updateState({
         error: {
           show: false,
-          message: uiStateRef.current.message,
+          message: uiState.message,
         },
       })
     }
@@ -143,51 +104,6 @@ const Home = () => {
 
   function refreshWindow() {
     window.location.reload()
-  }
-
-  function tick() {
-    try {
-      const video = videoRef.current
-
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        const canvasEl = canvasRef.current
-        const canvas = canvasEl.getContext('2d')
-        canvas.drawImage(video, 0, 0, canvasEl.width, canvasEl.height)
-        const imageData = canvas.getImageData(0, 0, canvasEl.width, canvasEl.height)
-        const code = jsQR(imageData.data, imageData.width, imageData.height, {
-          inversionAttempts: 'dontInvert',
-        })
-        if (code) {
-          alert(code.data)
-          uiStateRef.current.stream.getTracks().forEach(track => track.stop())
-          updateState({
-            isCamera: false,
-            qr: {
-              output: true,
-              data: code.data,
-            },
-            peerId: code.data,
-          })
-        } else {
-          updateState({
-            qr: {
-              output: false,
-              data: '',
-            },
-          })
-        }
-      }
-      if (!uiStateRef.current.qr.output) {
-        requestAnimationFrame(tick)
-      }
-    } catch (e) {
-      updateState({
-        error: {
-          show: true,
-          message: e.message,
-        },
-      })
-    }
   }
 
   return (
@@ -207,7 +123,6 @@ const Home = () => {
           />
         </Header>
         <Content className={'content'}>
-          {/*{uiState.error.show && <Alert showIcon message={uiState.error.message} type="error" closable />}*/}
           {uiState.peerConnected && <Alert showIcon message="Connected" type="success" closable />}
 
           {uiState.peerConnected && (
@@ -231,39 +146,24 @@ const Home = () => {
           {!uiState.peerConnected && (
             <>
               <div className={'scan-block'}>
+                <Input
+                  className={'peer-id-input'}
+                  placeholder={'Enter code'}
+                  onChange={e => updateState({ peerId: e.target.value })}
+                />
+
                 <p>
                   <Button
-                    className={'btn-scan'}
-                    onClick={scanCode}
-                    icon={<ScanOutlined />}
+                    className={'btn-connect'}
+                    icon={<ApiOutlined />}
                     size={'large'}
                     type={'primary'}
+                    disabled={!uiState.peerId}
+                    onClick={connectRemote}
                   >
-                    Scan now
+                    Connect
                   </Button>
-                  {uiState.isCamera && <video ref={videoRef} />}
                 </p>
-
-                <canvas ref={canvasRef} hidden />
-
-                {/*<Input*/}
-                {/*  className={'peer-id-input'}*/}
-                {/*  placeholder={'Enter code'}*/}
-                {/*  onChange={e => updateState({ peerId: e.target.value })}*/}
-                {/*/>*/}
-
-                {/*<p>*/}
-                {/*  <Button*/}
-                {/*    className={'btn-connect'}*/}
-                {/*    icon={<ApiOutlined />}*/}
-                {/*    size={'large'}*/}
-                {/*    type={'primary'}*/}
-                {/*    disabled={!uiState.peerId}*/}
-                {/*    onClick={connectRemote}*/}
-                {/*  >*/}
-                {/*    Connect*/}
-                {/*  </Button>*/}
-                {/*</p>*/}
               </div>
             </>
           )}

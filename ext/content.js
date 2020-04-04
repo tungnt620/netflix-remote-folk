@@ -69,12 +69,12 @@ function initPeer() {
     peer = new SimplePeer({ initiator: true, trickle: false });
   }
 
-  // const socket = io.connect("http://localhost:4003", {
-  //   path: "/netflix-broker/socket.io"
-  // });
-  const socket = io.connect("https://confession.vn", {
+  const socket = io.connect("http://localhost:4003", {
     path: "/netflix-broker/socket.io"
   });
+  // const socket = io.connect("https://confession.vn", {
+  //   path: "/netflix-broker/socket.io"
+  // });
   const state = {
     socket: false,
     signal: false,
@@ -85,6 +85,7 @@ function initPeer() {
     state.socket = socket.id;
   });
   socket.on("answer-signal", function(data) {
+    console.log(data);
     state.remotePeer = data;
     peer.signal(data);
   });

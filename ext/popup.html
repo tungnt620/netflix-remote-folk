@@ -36,18 +36,12 @@
         border-bottom: 1px solid #FDD835;
       }
       #peer-id{
-        padding: 2px;
-        font-size: 12px;
-        margin: 4px 0;
+        font-size: 30px;
         border-radius: 3px;
         border: 1px solid #ddd;
-        width: 230px;
         text-align: center;
         background: #eee;
-      }
-      #qr-code{
-        border: 1px solid #ddd;
-        border-radius: 5px;
+        margin: 4px 0 10px;
       }
       #helper-text{
         margin: 4px 0; 
@@ -61,11 +55,10 @@
     <section>
       <h1>Netflix Remote</h1>
       <button id="refresh" class="btn">Refresh</button>
-      <div class="connection" id="connection-status" hidden></div>
-      <pre id="status"></pre>
-      <img id="qr-code" alt="qr-code"/>
-<!--      <div id="peer-id"></div>-->
-      <div id="helper-text">Scan the code above</div>
+      <div class="connection" id="connection-status"></div>
+      <pre id="status">Connected</pre>
+      <div id="peer-id"></div>
+      <div id="helper-text">Enter this code on your phone (confession.vn/netflix)</div>
     </section>
   </body>
 </html>

@@ -1,12 +1,8 @@
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const lodashId = require("lodash-id");
+const redis = require("redis");
 
-const adapter = new FileSync("db.json");
-const db = low(adapter);
-db._.mixin(lodashId);
+const redisClient = redis.createClient({
+  host: process.env.REDIS_HOST || "localhost",
+  port: process.env.REDIS_PORT || 6379
+});
 
-db.defaults({ peers: [] }).write();
-const peers = db.get("peers");
-
-module.exports = { db, peers };
+module.exports = { redisClient };

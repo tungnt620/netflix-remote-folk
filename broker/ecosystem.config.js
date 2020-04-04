@@ -12,10 +12,14 @@ module.exports = {
       ignore_watch: ["node_modules"],
       max_memory_restart: "1G",
       env: {
-        NODE_ENV: "development"
+        NODE_ENV: "development",
+        REDIS_HOST: "localhost",
+        REDIS_PORT: 6379
       },
       env_production: {
-        NODE_ENV: "production"
+        NODE_ENV: "production",
+        REDIS_HOST: "localhost",
+        REDIS_PORT: 6379
       }
     }
   ],
