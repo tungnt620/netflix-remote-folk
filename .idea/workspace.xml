@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/broker/src/handles.js" beforeDir="false" afterPath="$PROJECT_DIR$/broker/src/handles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ext/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/popup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/store/ui/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/store/ui/reducers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +85,9 @@
       <workItem from="1585721161342" duration="8433000" />
       <workItem from="1585831983928" duration="307000" />
       <workItem from="1585882259932" duration="18524000" />
-      <workItem from="1585992584259" duration="1014000" />
+      <workItem from="1585992584259" duration="1892000" />
+      <workItem from="1586009338493" duration="5385000" />
+      <workItem from="1586063250057" duration="3180000" />
     </task>
     <servers />
   </component>

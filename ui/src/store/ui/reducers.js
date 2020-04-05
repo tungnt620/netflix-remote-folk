@@ -2,6 +2,7 @@ import ReducerBase from '../../shared/ReducerBase'
 import * as actionTypes from './actionTypes'
 
 const ui = new ReducerBase(actionTypes.UPDATE_UI_STATE, {
+  playing: false,
   isConnected: false,
   isCamera: false,
   peerId: '',

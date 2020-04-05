@@ -37,7 +37,7 @@ const handles = {
   },
   deletePeer: async socketId => {
     if (socketId) {
-      let socketData = await redisGetAsync([socketId]);
+      let socketData = (await redisGetAsync([socketId])) || "";
       await redisDelAsync(socketId);
 
       if (socketData) {
@@ -69,7 +69,7 @@ const handles = {
   },
   getSignal: async posPeer => {
     if (posPeer) {
-      const socketID = await redisGetAsync([posPeer]);
+      const socketID = (await redisGetAsync([posPeer])) || "";
       let socketData = await redisGetAsync([socketID]);
       if (socketData) {
         socketData = JSON.parse(socketData);

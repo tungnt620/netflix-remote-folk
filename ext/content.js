@@ -1,21 +1,25 @@
-let peerInit;
+var peerInit;
+var socketInit;
+
 function isWatchingVideo() {
   return /watch/.test(document.location.href);
 }
+
 function sendPayload(peer, data) {
   peer.send(JSON.stringify(data));
 }
+
 function clickButton(selector) {
   try {
     document.querySelector(selector).click();
   } catch (e) {}
 }
+
 function doesExist(selector) {
   return document.querySelector(selector) !== null;
 }
-function actionHandler(data, peer) {
-  console.log(data, peer);
 
+function actionHandler(data, peer) {
   switch (data.action) {
     case "video_action":
       if (!isWatchingVideo()) {
@@ -51,6 +55,11 @@ function actionHandler(data, peer) {
           case "next_episode":
             clickButton(".button-nfplayerNextEpisode");
             success = true;
+            break;
+          case "skip_intro":
+            clickButton(".skip-credits a");
+            success = true;
+            break;
         }
         if (success) {
           sendPayload(peer, { success: true });
@@ -59,22 +68,34 @@ function actionHandler(data, peer) {
       break;
   }
 }
+
+function getSocket() {
+  // const brokerUrl = "https://confession.vn";
+  const brokerUrl = "http://localhost:4003";
+
+  return io.connect(brokerUrl, {
+    path: "/netflix-broker/socket.io",
+    transports: ["websocket"]
+  });
+}
+
+function getPeer() {
+  return new SimplePeer({ initiator: true, trickle: false });
+}
+
 function initPeer() {
   let peer;
-  if (!peerInit) {
-    peer = new SimplePeer({ initiator: true, trickle: false });
-    peerInit = peer;
-  } else {
-    peerInit.destroy();
-    peer = new SimplePeer({ initiator: true, trickle: false });
-  }
+  let socket;
 
-  // const socket = io.connect("http://localhost:4003", {
-  //   path: "/netflix-broker/socket.io"
-  // });
-  const socket = io.connect("https://confession.vn", {
-    path: "/netflix-broker/socket.io"
-  });
+  if (peerInit) peerInit.destroy();
+  if (socketInit) socketInit.disconnect();
+
+  peer = getPeer();
+  peerInit = peer;
+
+  socket = getSocket();
+  socketInit = socket;
+
   const state = {
     socket: false,
     signal: false,
@@ -85,7 +106,6 @@ function initPeer() {
     state.socket = socket.id;
   });
   socket.on("answer-signal", function(data) {
-    console.log(data);
     state.remotePeer = data;
     peer.signal(data);
   });
@@ -93,6 +113,7 @@ function initPeer() {
     chrome.runtime.sendMessage({ peerId: data });
     state.peerId = data;
   });
+
   peer.on("signal", function(data) {
     state.signal = data;
     socket.emit("peer", data);
@@ -100,9 +121,12 @@ function initPeer() {
   peer.on("connect", function() {
     chrome.storage.local.set({ peerConnected: true });
     chrome.runtime.sendMessage({ peerConnected: true });
+    socketInit.disconnect();
+    sendPayload(peer, { playing: !doesExist(".button-nfplayerPlay") });
   });
   peer.on("data", function(data) {
     const dataString = data.toString();
+
     if (dataString[0] === "{") {
       const data = JSON.parse(dataString);
       actionHandler(data, peer);
