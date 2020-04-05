@@ -16,3 +16,4 @@ dataDir
 .db
 .db-journal
 db.json
+ext.zip
