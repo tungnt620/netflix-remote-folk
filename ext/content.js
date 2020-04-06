@@ -1,5 +1,5 @@
-var peerInit;
-var socketInit;
+let peerInit;
+let socketInit;
 
 function isWatchingVideo() {
   return /watch/.test(document.location.href);
@@ -20,13 +20,16 @@ function doesExist(selector) {
 }
 
 function actionHandler(data, peer) {
-  switch (data.action) {
+  console.log(data);
+  const { namespace, payload } = data;
+
+  switch (namespace) {
     case "video_action":
       if (!isWatchingVideo()) {
         sendPayload(peer, { error: "Not watching video" });
       } else {
-        const { action } = data.payload;
         let success = false;
+        const { action } = payload;
         switch (action) {
           case "play_video":
             if (!doesExist(".button-nfplayerPlay")) {
@@ -60,7 +63,59 @@ function actionHandler(data, peer) {
             clickButton(".skip-credits a");
             success = true;
             break;
+          case "set_subtitle":
+            const { selectedSubtitleDataUia } = payload;
+            clickButton(".button-nfplayerSubtitles");
+            setTimeout(function() {
+              clickButton(`[data-uia="${selectedSubtitleDataUia}"]`);
+            }, 200);
+            success = true;
+            break;
+          case "lln_toggle_translation":
+            clickButton("#showHT");
+            const blurTranslation = document.getElementById("blurTranslations");
+            if (blurTranslation && blurTranslation.checked) {
+              clickButton("#blurTranslations");
+            }
+            success = true;
+            break;
+          case "lln_view_definition":
+            const { sliderValue } = payload;
+
+            if (!sliderValue) {
+              if (
+                document
+                  .querySelector(".lln-dict-tooltip")
+                  .classList.contains("show")
+              ) {
+                clickButton(".button-nfplayerPlay");
+              }
+            } else {
+              const wordEles = document.querySelectorAll(
+                "#lln-subs span.lln-word"
+              );
+              if (wordEles.length) {
+                let selectedWorldEle;
+                const sliderValueForEachWord = 100 / wordEles.length;
+                for (let i = 1; i <= wordEles.length; ++i) {
+                  if (sliderValue < sliderValueForEachWord * i) {
+                    selectedWorldEle = wordEles[i - 1];
+                    break;
+                  }
+                }
+                if (sliderValue === 100)
+                  selectedWorldEle = wordEles[wordEles.length - 1];
+
+                if (selectedWorldEle) selectedWorldEle.click();
+              }
+            }
+
+            success = true;
+            break;
+          default:
+            console.log(data);
         }
+
         if (success) {
           sendPayload(peer, { success: true });
         }
@@ -70,8 +125,8 @@ function actionHandler(data, peer) {
 }
 
 function getSocket() {
-  const brokerUrl = "https://confession.vn";
-  // const brokerUrl = "http://localhost:4003";
+  // const brokerUrl = "https://confession.vn";
+  const brokerUrl = "http://localhost:4003";
 
   return io.connect(brokerUrl, {
     path: "/netflix-broker/socket.io",
@@ -122,7 +177,48 @@ function initPeer() {
     chrome.storage.local.set({ peerConnected: true });
     chrome.runtime.sendMessage({ peerConnected: true });
     socketInit.disconnect();
+
+    //
     sendPayload(peer, { playing: !doesExist(".button-nfplayerPlay") });
+
+    //
+    const intervalID = setInterval(() => {
+      const subtitleBtn = document.querySelector(".button-nfplayerSubtitles");
+
+      if (subtitleBtn) {
+        subtitleBtn.click();
+
+        setTimeout(function() {
+          const subtitlesData = [];
+          const subtitles = document.querySelectorAll(
+            ".track-list-subtitles ul li"
+          );
+          for (let i = 0; i < subtitles.length; ++i) {
+            const subtitleEle = subtitles[i];
+            const subtitleDataUia = subtitleEle.getAttribute("data-uia");
+            const subtitleText = subtitleEle.textContent;
+            const selected = subtitleEle
+              .getAttribute("class")
+              .includes("selected");
+            subtitlesData.push({
+              subtitleDataUia,
+              subtitleText,
+              selected
+            });
+          }
+
+          if (subtitlesData.length) {
+            sendPayload(peer, { subtitlesData: subtitlesData });
+            clearInterval(intervalID);
+          }
+        }, 300);
+      }
+    }, 100);
+
+    // Check exist LLN
+    sendPayload(peer, {
+      isHaveLLN: !!document.querySelector(".lln-bottom-panel")
+    });
   });
   peer.on("data", function(data) {
     const dataString = data.toString();

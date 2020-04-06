@@ -1,0 +1,39 @@
+.controls {
+  margin: 20px 0;
+  padding: 0 5px;
+  text-align: center;
+
+  .ant-space {
+    width: 100%;
+  }
+
+  button, .ant-select {
+    width: 90%!important;
+  }
+
+  .ant-slider {
+    .ant-slider-handle {
+      width: 30px;
+      height: 30px;
+      margin-top: -13px;
+    }
+
+    .ant-slider-step {
+      background-color: #69c0ff;
+    }
+  }
+
+  .lln {
+    .lln-header {
+      margin-top: 20px;
+    }
+
+    .lln-on-off-translation {
+      width: 100% !important;
+    }
+
+    .lln-word-definition-header {
+      margin-top: 10px;
+    }
+  }
+}

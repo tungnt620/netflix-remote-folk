@@ -1,6 +1,6 @@
 {
     "name": "Điều khiển từ xa cho netflix",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Thực hiện các tác vụ: tạm dừng, play, tua ngược, ... từ điện thoại của bạn đến Netflix trên máy tính.",
     "permissions": [ "declarativeContent", "storage" ],
     "manifest_version": 2,
