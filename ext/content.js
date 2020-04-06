@@ -125,8 +125,8 @@ function actionHandler(data, peer) {
 }
 
 function getSocket() {
-  // const brokerUrl = "https://confession.vn";
-  const brokerUrl = "http://localhost:4003";
+  const brokerUrl = "https://confession.vn";
+  // const brokerUrl = "http://localhost:4003";
 
   return io.connect(brokerUrl, {
     path: "/netflix-broker/socket.io",
