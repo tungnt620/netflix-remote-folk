@@ -106,7 +106,11 @@ function actionHandler(data, peer) {
                 if (sliderValue === 100)
                   selectedWorldEle = wordEles[wordEles.length - 1];
 
-                if (selectedWorldEle) selectedWorldEle.click();
+                if (selectedWorldEle) {
+                  selectedWorldEle.click();
+                  document.querySelector(".lln-dict-tooltip").style.fontSize =
+                    "23px";
+                }
               }
             }
 
@@ -125,8 +129,8 @@ function actionHandler(data, peer) {
 }
 
 function getSocket() {
-  const brokerUrl = "https://confession.vn";
-  // const brokerUrl = "http://localhost:4003";
+  // const brokerUrl = "https://confession.vn";
+  const brokerUrl = "http://localhost:4003";
 
   return io.connect(brokerUrl, {
     path: "/netflix-broker/socket.io",

@@ -134,7 +134,7 @@ const ConnectedRemote = () => {
               <RnDWrapper eleKey={'lln-world-definition'} boundSelector={'.rnd'}>
                 <div className={'lln-word-definition'}>
                   <h4 className={'header'}>LLN world definition</h4>
-                  <Slider size={'large'} min={0} max={100} onChange={debounceViewDefinition} />
+                  <Slider tooltipVisible={false} size={'large'} min={0} max={100} onChange={debounceViewDefinition} />
                 </div>
               </RnDWrapper>
             </div>
