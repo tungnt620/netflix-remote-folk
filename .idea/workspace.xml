@@ -4,7 +4,7 @@
     <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ext/manifest.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       <workItem from="1585992584259" duration="1892000" />
       <workItem from="1586009338493" duration="5385000" />
       <workItem from="1586063250057" duration="3739000" />
-      <workItem from="1586137958773" duration="22323000" />
+      <workItem from="1586137958773" duration="22373000" />
     </task>
     <servers />
   </component>
