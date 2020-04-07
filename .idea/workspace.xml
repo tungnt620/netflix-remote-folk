@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/reducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/AppHeader/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/AppHeader/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/store/createStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/store/createStore.js" afterDir="false" />
-    </list>
+    <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +82,7 @@
       <workItem from="1585992584259" duration="1892000" />
       <workItem from="1586009338493" duration="5385000" />
       <workItem from="1586063250057" duration="3739000" />
-      <workItem from="1586137958773" duration="21140000" />
+      <workItem from="1586137958773" duration="21291000" />
     </task>
     <servers />
   </component>
