@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a621ee20-c848-4dca-b04b-869ced7faabd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/store/rnd/reducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/ext/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ext/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ext/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/AppHeader/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/AppHeader/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/ConnectedRemote/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/store/createStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/store/createStore.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ext/popup/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui/src/store" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -47,6 +54,7 @@
       <recent name="$PROJECT_DIR$/ui/old" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ui/src/store" />
       <recent name="$PROJECT_DIR$/ext/popup/images" />
       <recent name="$PROJECT_DIR$/ui" />
       <recent name="$PROJECT_DIR$/broker" />
@@ -85,7 +93,7 @@
       <workItem from="1585992584259" duration="1892000" />
       <workItem from="1586009338493" duration="5385000" />
       <workItem from="1586063250057" duration="3739000" />
-      <workItem from="1586137958773" duration="11511000" />
+      <workItem from="1586137958773" duration="21140000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,6 @@ const Home = () => {
     <AppLayout>
       <InitConnections />
       <ConnectedRemote />
-
       <NotYetConnectRemote />
     </AppLayout>
   )

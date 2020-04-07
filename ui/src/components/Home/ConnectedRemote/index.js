@@ -10,10 +10,13 @@ import RedoOutlined from '@ant-design/icons/es/icons/RedoOutlined'
 import StepForwardOutlined from '@ant-design/icons/es/icons/StepForwardOutlined'
 import debounce from 'lodash.debounce'
 import DoubleRightOutlined from '@ant-design/icons/es/icons/DoubleRightOutlined'
+import RnDWrapper from '../RnDWrapper'
 
 const ConnectedRemote = () => {
   const uiState = useSelector(({ ui }) => ui)
   const dispatch = useDispatch()
+  const rndDisabled = useSelector(({ rnd }) => rnd.disabled)
+  const rndEditing = useSelector(({ rnd }) => rnd.editing)
 
   const updateState = newUIStateValues => {
     dispatch(updateUIState(newUIStateValues))
@@ -79,57 +82,65 @@ const ConnectedRemote = () => {
 
   if (uiState.peerConnected) {
     return (
-      <>
-        <Alert showIcon message="Connected" type="success" closable />
-        <div className={'controls'}>
-          <Row>
-            <Col span={12}>
-              <Space size={'small'} direction="vertical">
-                {uiState.playing ? getPauseBtn() : getPlayBtn()}
-                <Button onClick={() => videoAction('replay_video')} icon={<UndoOutlined />} size={'large'} />
-                <Button onClick={() => videoAction('forward_video')} icon={<RedoOutlined />} size={'large'} />
-              </Space>
-            </Col>
-            <Col span={12}>
-              <Space size={'small'} direction="vertical">
-                <Button onClick={() => videoAction('next_episode')} icon={<StepForwardOutlined />} size={'large'}>
-                  Next Episode
-                </Button>
-                <Button
-                  disabled={!uiState.playing}
-                  onClick={() => videoAction('skip_intro')}
-                  icon={<DoubleRightOutlined />}
-                  size={'large'}
-                >
-                  Skip intro
-                </Button>
-                {uiState.subtitlesData?.length > 0 && (
-                  <Select defaultValue={defaultSubtitleDataUia} onChange={onChangeSelectSubtitle} size={'large'}>
-                    {uiState.subtitlesData.map((subtitle, index) => (
-                      <Select.Option key={index} value={subtitle.subtitleDataUia}>
-                        {subtitle.subtitleText}
-                      </Select.Option>
-                    ))}
-                  </Select>
-                )}
-              </Space>
-            </Col>
-          </Row>
+      <div className={`${rndDisabled ? '' : `rnd ${rndEditing ? 'editing' : ''}`}`}>
+        <div className={`controls`}>
+          <RnDWrapper eleKey={'pause-play-btn'} boundSelector={'.rnd'}>
+            {uiState.playing ? getPauseBtn() : getPlayBtn()}
+          </RnDWrapper>
+          <RnDWrapper eleKey={'replay-video-btn'} boundSelector={'.rnd'}>
+            <Button onClick={() => videoAction('replay_video')} icon={<UndoOutlined />} size={'large'} />
+          </RnDWrapper>
+          <RnDWrapper eleKey={'forward-video-btn'} boundSelector={'.rnd'}>
+            <Button onClick={() => videoAction('forward_video')} icon={<RedoOutlined />} size={'large'} />
+          </RnDWrapper>
+
+          <RnDWrapper eleKey={'next-episode-btn'} boundSelector={'.rnd'}>
+            <Button onClick={() => videoAction('next_episode')} icon={<StepForwardOutlined />} size={'large'}>
+              Next Episode
+            </Button>
+          </RnDWrapper>
+
+          <RnDWrapper eleKey={'skip-intro-btn'} boundSelector={'.rnd'}>
+            <Button
+              disabled={!uiState.playing}
+              onClick={() => videoAction('skip_intro')}
+              icon={<DoubleRightOutlined />}
+              size={'large'}
+            >
+              Skip intro
+            </Button>
+          </RnDWrapper>
+
+          <RnDWrapper eleKey={'change-subtitle-select'} boundSelector={'.rnd'}>
+            {uiState.subtitlesData?.length > 0 && (
+              <Select defaultValue={defaultSubtitleDataUia} onChange={onChangeSelectSubtitle} size={'large'}>
+                {uiState.subtitlesData.map((subtitle, index) => (
+                  <Select.Option key={index} value={subtitle.subtitleDataUia}>
+                    {subtitle.subtitleText}
+                  </Select.Option>
+                ))}
+              </Select>
+            )}
+          </RnDWrapper>
 
           {uiState.isHaveLLN && (
             <div className={'lln'}>
-              <hr />
-              <h3 className={'lln-header'}>LLN</h3>
-              <Button className={'lln-on-off-translation'} onClick={onOffLLNTranslation}>
-                On/Of translation
-              </Button>
+              <RnDWrapper eleKey={'lln-on-off-translation-btn'} boundSelector={'.rnd'}>
+                <Button className={'lln-on-off-translation'} onClick={onOffLLNTranslation}>
+                  LLN On/Of translation
+                </Button>
+              </RnDWrapper>
 
-              <h4 className={'lln-word-definition-header'}>World definition</h4>
-              <Slider size={'large'} min={0} max={100} onChange={debounceViewDefinition} />
+              <RnDWrapper eleKey={'lln-world-definition'} boundSelector={'.rnd'}>
+                <div className={'lln-word-definition'}>
+                  <h4 className={'header'}>LLN world definition</h4>
+                  <Slider size={'large'} min={0} max={100} onChange={debounceViewDefinition} />
+                </div>
+              </RnDWrapper>
             </div>
           )}
         </div>
-      </>
+      </div>
     )
   }
 
